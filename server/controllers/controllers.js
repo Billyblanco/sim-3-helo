@@ -15,5 +15,21 @@ module.exports = {
         res.sendStatus(results)
       })
     }
+  }, 
+  create: (req, res) => {
+    let db = req.app.get('db')
+    let { title, image, content } = req.body
+    let author_id = req.session.user ?
+    req.session.user.id : 1
+
+    let newPost = { author_id, title, image, content }
+    let posts = db.createPost(newPost)
+    let post = posts[0]
+    res.send(post)
+  }, 
+  read: (req, res) => {
+    let db = req.app.get('db')
+    let posts = db.getPosts()
+    res.send(posts)
   }
 }

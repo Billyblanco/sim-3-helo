@@ -44,9 +44,9 @@ handleUsername = (e) => {
         <p>Username:</p>
           <input  key="Username" 
                   placeholder='username' 
-                  onChange={this.handleUsername}/>
+                  />
         <p>password:</p>
-          <input  
+          <input  onChange={this.handleUsername}
                   placeholder='password'
                   onChange={this.handlePassword}/>
         <button >LOGIN</button>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-
+import { getPosts } from '../ducks/reducers/posts'
 
 class Dashboard extends Component {
   constructor() {
@@ -13,10 +13,10 @@ class Dashboard extends Component {
     }
   }
 
-
+componentDidMount() {
+  this.props.getPosts()
+}
   
-
-
   render () {
     return (
       <div>
@@ -36,9 +36,5 @@ class Dashboard extends Component {
   }
 }
 
-let mapStateToProps = state => {
-  return {
-   
-  }
-}
-export default connect(mapStateToProps)(Dashboard) 
+
+export default connect(null, { getPosts })(Dashboard) 
