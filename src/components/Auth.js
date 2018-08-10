@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 class Auth extends Component {
   constructor () {
@@ -44,13 +45,13 @@ handleUsername = (e) => {
         <p>Username:</p>
           <input  key="Username" 
                   placeholder='username' 
-                  />
+                  onChange={this.handleUsername}/>
         <p>password:</p>
           <input  onChange={this.handleUsername}
                   placeholder='password'
                   onChange={this.handlePassword}/>
         <button >LOGIN</button>
-        <button onClick={ () => {this.registerUser()}}>REGISTER</button>
+       <Link to='dashboard'><button onClick={ () => {this.registerUser()}}>REGISTER</button></Link>
       </div>
     )
   }
