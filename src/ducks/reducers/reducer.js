@@ -14,11 +14,11 @@ let initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
       case UPDATE_ID:
-        return {...state, id: action.payload}
+        return {...state, id: action.payload.data}
       case UPDATE_USERNAME:
-        return {...state, username: action.payload}
+        return {...state, username: action.payload.data}
       case UPDATE_PROFILE_PICTURE:
-        return {...state, profilePicture: action.payload}
+        return {...state, profilePicture: action.payload.data}
 
     default: 
       return state

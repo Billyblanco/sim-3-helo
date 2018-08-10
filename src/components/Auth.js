@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import axios from 'axios'
 
 class Auth extends Component {
   constructor () {
@@ -9,6 +11,19 @@ class Auth extends Component {
       password: ''
     }
   }
+
+  registerUser = () => {
+    const { username, password } = this.state
+    const newUser = { username, password }
+    axios.post('/api/auth/register', newUser).then(results => {
+      this.setState({
+    
+        username: results.data,
+        password: results.data
+      })
+    })
+  }
+  
 
 handlePassword = (e) => {
   this.setState({
@@ -26,13 +41,16 @@ handleUsername = (e) => {
   render () {
     return (
       <div>
-          <input placeholder='username' 
+        <p>Username:</p>
+          <input  key="Username" 
+                  placeholder='username' 
                   onChange={this.handleUsername}/>
-
-          <input placeholder='password'
-                 onChange={this.handlePassword}/>
+        <p>password:</p>
+          <input  
+                  placeholder='password'
+                  onChange={this.handlePassword}/>
         <button >LOGIN</button>
-        <button>REGISTER</button>
+        <button onClick={ () => {this.registerUser()}}>REGISTER</button>
       </div>
     )
   }

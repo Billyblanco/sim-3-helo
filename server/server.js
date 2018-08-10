@@ -3,6 +3,8 @@ const express = require('express')
     , massive = require('massive')
     , bodyParser = require('body-parser')
     , authController = require('./controllers/authController')
+    , controller = require('./controllers/controllers')
+
 require('dotenv').config()
 
 const app = express()
@@ -21,15 +23,15 @@ massive(process.env.CONNECTION_STRING).then( db => {
     console.log('DATABASE CONNECTED')
 })
 
-//Auth0
-app.get('/auth/callback', authController.auth)
 
+
+app.get('/api/posts')
 app.get('/api/posts/:userid')
 app.get('/api/post/:postid')
 
-app.put('/api/auth/register')
-app.put('/api/auth/login')
-app.put('/api/post/:userid')
+app.post('/api/auth/register', controller.register)
+app.post('/api/auth/login')
+app.post('/api/post/:userid')
 
 
 

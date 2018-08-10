@@ -1,13 +1,44 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 
 class Dashboard extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      posts: [],
+      search: '', 
+      userposts: true
+    }
+  }
+
+
   
+
+
   render () {
     return (
       <div>
-        Dashboard
+      
+          <input type='text' placeholder="Search By Title"/>
+            <button>Reset</button>
+          <input type='submit' value='x'/>
+
+        <p>Title:</p>
+          <input />
+       <p>Image URL:</p>
+          <input />
+       <p>Content:</p>
+          <input />
       </div>
     )
   }
 }
-export default Dashboard 
+
+let mapStateToProps = state => {
+  return {
+   
+  }
+}
+export default connect(mapStateToProps)(Dashboard) 
